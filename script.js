@@ -14,13 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
   glossaryLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
-      const term = link.textContent.trim(); // Get the text content of the link and trim any extra whitespace
-      console.log(term);
-      if (glossaryData.hasOwnProperty(term)) {
-        const item = glossaryData[term];
-        const title = item.title; // Assuming 'title' is the key for title in your data
-        const description = item.description; // Assuming 'description' is the key for description in your data
+      const term = link.textContent.trim();
+      const item = glossaryData.find((entry) => Object.keys(entry)[0] === term);
+      if (item) {
+        const title = Object.keys(item)[0];
+        const description = item[title];
         console.log(title, description);
+
         // Update and display your modal here
         // document.querySelector(".modal-title").textContent = title;
         // document.querySelector(".modal-description").textContent = description;
