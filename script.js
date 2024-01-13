@@ -1,18 +1,19 @@
 const glossaryLinksContainer = document.querySelector(".text-rich-text");
 const glossaryModal = document.querySelector(".glossary-modal_component");
-const glossaryModalParent = glossaryModal.parentElement;
 
-const glossaryModalClose = glossaryModal.querySelectorAll(
+const glossaryModalParent = glossaryModal?.parentElement;
+
+const glossaryModalClose = glossaryModal?.querySelectorAll(
   ".glossary-modal_close-button, .glossary-modal_background-overlay"
 );
-const glossaryAlphabetLinks = glossaryModal.querySelectorAll(
+const glossaryAlphabetLinks = glossaryModal?.querySelectorAll(
   ".glossary-modal_alphabet-wrapper a"
 );
-const glosaryModalSimilarLetter = glossaryModal.querySelector(
+const glosaryModalSimilarLetter = glossaryModal?.querySelector(
   ".glossary-modal_similar-letter-wrapper"
 );
-const glossaryModalTitle = glossaryModal.querySelector("h3");
-const glossaryModalDescription = glossaryModal.querySelector("p");
+const glossaryModalTitle = glossaryModal?.querySelector("h3");
+const glossaryModalDescription = glossaryModal?.querySelector("p");
 
 //Data storage on page
 let glossaryData;
