@@ -39,7 +39,6 @@ function createTermLinks(terms) {
 function attachLinkEventListeners(links) {
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
-      a;
       e.preventDefault();
       const term = link.textContent.trim();
       const matchingItem = glossaryData.find(
