@@ -49,9 +49,23 @@ function attachLinkEventListeners(links) {
     });
   });
 }
+//Check if database contains certain letter and delete letter if not
+function removeUnusedAlphabetLinks() {
+  glossaryAlphabetLinks.forEach((link) => {
+    const letter = link.textContent.trim();
+    const wordsStartingWithLetter = glossaryData.some(
+      (entry) => Object.keys(entry)[0].charAt(0).toUpperCase() === letter
+    );
+
+    if (!wordsStartingWithLetter) {
+      link.remove(); // Remove the alphabet link if no words start with this letter
+    }
+  });
+}
 
 document.addEventListener("DOMContentLoaded", function () {
   if (glossaryModal) {
+    removeUnusedAlphabetLinks();
     // Fetch the glossary data
     fetch(
       "https://cdn.jsdelivr.net/gh/MaxChechel/EPYC---glossary/glossary-base.json"
