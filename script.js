@@ -65,7 +65,6 @@ function removeUnusedAlphabetLinks() {
 
 document.addEventListener("DOMContentLoaded", function () {
   if (glossaryModal) {
-    removeUnusedAlphabetLinks();
     // Fetch the glossary data
     fetch(
       "https://cdn.jsdelivr.net/gh/MaxChechel/EPYC---glossary/glossary-base.json"
@@ -76,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         glossaryData = data.sort((a, b) =>
           Object.keys(a)[0].localeCompare(Object.keys(b)[0])
         );
-
+        removeUnusedAlphabetLinks();
         // Attach event listeners to alphabetical links
         glossaryAlphabetLinks.forEach((alphaLink) => {
           alphaLink.addEventListener("click", (e) => {
