@@ -4,7 +4,7 @@ const glossaryModal = document.querySelector(".glossary-modal_component");
 const glossaryModalParent = glossaryModal?.parentElement;
 
 const glossaryModalClose = glossaryModal?.querySelectorAll(
-  ".glossary-modal_close-button, .glossary-modal_background-overlay"
+  ".glossary-modal_close-button"
 );
 const glossaryAlphabetLinks = glossaryModal?.querySelectorAll(
   ".glossary-modal_alphabet-wrapper a"
