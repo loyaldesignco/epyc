@@ -1,6 +1,8 @@
 const glossaryLinksContainer = document.querySelector(".text-rich-text");
 const glossaryModal = document.querySelector(".glossary-modal_component");
-
+const glossaryModalContent = document.querySelector(
+  ".glossary-modal_content-wrapper"
+);
 const glossaryModalParent = glossaryModal?.parentElement;
 
 const glossaryModalClose = glossaryModal?.querySelectorAll(
@@ -18,15 +20,18 @@ const glossaryModalDescription = glossaryModal?.querySelector("p");
 //Data storage on page
 let glossaryData;
 
-function openModal() {
+let lastFocusedElement;
+function openModal(triggerElement) {
+  lastFocusedElement = triggerElement;
+  console.log(lastFocusedElement);
   glossaryModalParent.classList.add("is-active");
   glossaryModal.classList.add("is-active");
 
   // Add tabindex attribute to the modal title to make it focusable
-  glossaryModalTitle.setAttribute("tabindex", "-1");
+  glossaryModalContent.setAttribute("tabindex", "-1");
 
   // Set focus on the modal title
-  glossaryModalTitle.focus();
+  glossaryModalContent.focus();
 
   // Add keydown listener for Escape key when modal is open
   document.addEventListener("keydown", handleModalKeydown);
@@ -34,6 +39,10 @@ function openModal() {
 function closeModal() {
   glossaryModalParent.classList.remove("is-active");
   glossaryModal.classList.remove("is-active");
+
+  if (lastFocusedElement) {
+    lastFocusedElement.focus(); // Set focus back to the element that opened the modal
+  }
 
   // Remove keydown listener when modal is closed
   document.removeEventListener("keydown", handleModalKeydown);
@@ -167,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
         glossaryModalDescription.textContent = matchingItem[term];
 
         // Open modal
-        openModal();
+        openModal(link);
       }
     });
 
