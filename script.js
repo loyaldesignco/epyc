@@ -44,7 +44,7 @@ function createTermLinks(terms) {
     const termLink = document.createElement("a");
     termLink.href = "#";
     termLink.textContent = t;
-    termLink.setAttribute("aria-label", "Learn more about Glossary Term");
+    termLink.setAttribute("aria-label", `${t} glossary term`);
 
     // Add keydown event listener for Enter key
     termLink.addEventListener("keydown", handleGlossaryLinkKeydown);
@@ -90,7 +90,7 @@ function removeUnusedAlphabetLinks() {
     );
 
     if (!wordsStartingWithLetter) {
-      link.remove(); // Remove the alphabet link if no words start with this letter
+      link.parentElement.remove(); // Remove the alphabet link if no words start with this letter
     }
   });
 }
